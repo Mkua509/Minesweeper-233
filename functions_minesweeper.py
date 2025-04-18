@@ -35,11 +35,33 @@ def display_board(new_board):
             # fill in board string
             board = board + new_board[i] + " "
         board = board + "\n"
-    print(board)
+    return board
 
+'''
+Task 3: Inserting the mines
+A function called insert_mines that inserts mines to the board at specified postions.
+The mines should be represented by the X character
+Input 1: a list representing the board
+Input 2:list of lists representing each mine location. The first index in
+each nested list represents the row (0-4) and the second index represents the
+column (0-4)
+Output: No output
+Author: Maternus Kuang
+'''
 
+def insert_mine(board, positions):
+    # loop through given list
+    for n in positions:
+        # access row and col of specfied positions
+        row = n[0]
+        col = n[1]
+        # 2D to 1D
+        i = row * 5 + col  
+        # place mine at given location
+        board[i] = "X"  
 
-
-# test the board display
-my_board = initialise_board()
-display_board(my_board)
+# example usage
+my_board = initialise_board() 
+insert_mine(my_board, [[1, 2], [3, 4], [0, 0]]) 
+board_string = display_board(my_board)  
+print(board_string) 
