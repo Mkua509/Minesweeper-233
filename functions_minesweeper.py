@@ -30,12 +30,13 @@ def display_board(new_board):
     # loop through rows and cols 5x5
     for row in range(5):
         for col in range(5):
-            # 2D to 3D
+            # 2D to 1D
             i = row * 5 + col
             # fill in board string
             board = board + new_board[i] + " "
         board = board + "\n"
     print (board)
+
 
 '''
 Task 3: Inserting the mines
@@ -82,14 +83,14 @@ def count_adjacent_mines(board, rows, cols):
     for r in range(rows - 1, rows + 2):
         # loop thorugh cols around cell
         for c in range(cols - 1, cols + 2):
-            # skip picked cell
+            # skip the picked cell
             if r == rows and c == cols:
                 continue
 
-            # withen boundarys
-            if 0 <= r < 5 and 0 <= c < 5:
-                index = r * 5 + c
-                if board[index] == "X":
+            # withan boundarys
+            if 0 <= r< 5 and 0 <= c < 5:
+                i = r * 5 + c
+                if board[i] == "X":
                     count += 1
 
     return count
@@ -98,3 +99,4 @@ board = initialise_board()
 insert_mine(board, [[0, 0], [1, 1], [2, 2]])
 display_board(board)
 print(count_adjacent_mines(board, 3, 2))  
+
