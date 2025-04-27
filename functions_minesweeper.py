@@ -125,5 +125,20 @@ def play_turn (board, rows, cols):
         else:
             board[i] = str(count)
         return board, False
-
     
+'''
+Task 6: Checking for a Win!
+A function check_win that determines if the playter has won the game. This occurs when all positions that do not contain a mine have been selected.
+Input 1: a list representing the board
+Output 1: a bool representing if the game has been won (True) or not (False)
+Author: Maternus Kuang
+'''
+
+def check_win (board): 
+    # Loop through the entire list if there is a O they have not won 
+    for n in board:
+        if n == "O":
+            return False
+    # Otherwise return true
+    return True
+
