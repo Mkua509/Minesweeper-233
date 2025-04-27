@@ -95,8 +95,35 @@ def count_adjacent_mines(board, rows, cols):
 
     return count
 
-board = initialise_board()
-insert_mine(board, [[0, 0], [1, 1], [2, 2]])
-display_board(board)
-print(count_adjacent_mines(board, 3, 2))  
 
+'''
+Task 5: Playing a Turn
+A function play_turn that plays a turn using the provided row and col on the provided board. If a hidden mine is selcted, it should change to a # character. 
+Otherwise the number of mines adjacent to the selected postion should replace the exisitng charcter. If none are adjacent mines, the space character should be used
+Input 1: a list representing the board
+Input 2: an int reprersenting the row (0-4) of postion being selected 
+Input 3: an int representing the col (0-4) of postion being selected
+Output 1: a list representing the updated board. returning the updated board (unlike func 3)
+Outpu 2: bool flagging of a mine was selected True if a mine was selected, False otherwise)
+Author: Maternus Kuang
+'''
+    
+def play_turn (board, rows, cols):
+    # Turn 2d into 1d
+    i = rows * 5 + cols
+
+    # If selected mine
+    if board[i] == " X":
+        board[i] = "#"
+        return board, True
+    else:
+        # If no adjacent mines replace with space
+        count = count_adjacent_mines(board, rows, cols)
+        if count == 0:
+            board[i] = " "
+        # Otherwise replace with number counted
+        else:
+            board[i] = str(count)
+        return board, False
+
+    
