@@ -32,8 +32,12 @@ def display_board(new_board):
         for col in range(5):
             # 2D to 1D
             i = row * 5 + col
-            # fill in board string
-            board = board + new_board[i] + " "
+            # If the square a mine display as "O"
+            if new_board[i] == "X":
+                board = board + "O "
+            # Otherwise fill in board string 
+            else:
+                board = board + new_board[i] + " "
         board = board + "\n"
     print (board)
 
@@ -49,7 +53,7 @@ Output: No output
 Author: Maternus Kuang
 '''
 
-def insert_mine(board, positions):
+def insert_mines(board, positions):
     # loop through given list
     for n in positions:
         # access row and col of specfied positions
@@ -60,11 +64,6 @@ def insert_mine(board, positions):
         # place mine at given location
         board[i] = "X"  
 
-
-# example usage
-# my_board = initialise_board() 
-# insert_mine(my_board, [[1, 2], [3, 4], [0, 0]]) 
-# display_board(my_board)  # It prints the board inside
 
 '''
 Task 4: Counting Adjacent Mines
@@ -113,7 +112,7 @@ def play_turn (board, rows, cols):
     i = rows * 5 + cols
 
     # If selected mine
-    if board[i] == " X":
+    if board[i] == "X":
         board[i] = "#"
         return board, True
     else:
@@ -142,3 +141,33 @@ def check_win (board):
     # Otherwise return true
     return True
 
+'''
+Task 7: Play a Game
+A function play_game that can play minesweeper game from start to finish
+Input 1: a list of lists indicating the positions that mines will be placed in the board
+Author: Maternus Kuang
+'''
+
+def play_game(positions):
+    board = initialise_board()
+    insert_mines(board, positions)
+    display_board(board)
+    game_over = False
+    
+    while not game_over:
+        user_input = input("Enter row and col seperated by a space (ex: 1 3):")
+
+        split = user_input.split()
+        row = int(split[0])
+        col = int(split[1])
+
+        board, hit_mine = play_turn(board, row, col)
+
+        display_board(board)
+
+        if hit_mine:
+
+            print("You hit a mine, Game over.")
+            game_over = True
+        elif check_win(board):
+            print("You won!")
