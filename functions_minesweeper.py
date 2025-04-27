@@ -1,9 +1,16 @@
 '''
 Task 1: Initialising the Board
 A function called initialise_board that initialises the Minesweeper grid
-Input: none
-Output: a list representing the Minesweeper board. 
-It containing 25 items, each item being the string O, and each representing a square not selected
+
+Arguments:
+
+Returns:
+list: It containing 25 items, each item being the string O, and each representing a square not selected
+
+Notes: 
+The baord is 1D representing 5x5 grid
+All squares are "O" at first
+
 Author: Maternus Kuang
 '''
 
@@ -18,8 +25,16 @@ def initialise_board():
 Task 2: Visualizing the Board
 A function called display_board that displays screen 5*5 minesweeper board. 0s, spaces and num of adjacent mines
 are displayed. However hidden mines, X are displayed as 0.
-Input: list representing the board
-Output: none
+
+Arguments:
+new_board(list): list representing the board
+
+Returns:
+
+Notes:
+Hiddent mines "X" are displayed as "O"
+All other values are shown normally
+
 Author: Maternus Kuang
 '''
 
@@ -46,10 +61,16 @@ def display_board(new_board):
 Task 3: Inserting the mines
 A function called insert_mines that inserts mines to the board at specified postions.
 The mines should be represented by the X character
-Input 1: a list representing the board
-Input 2: list of lists representing each mine location. The first index in each nested list represents the row (0-4) and the second index represents the
-column (0-4)
-Output: No output
+
+Arguments:
+board(list): a list representing the board
+positions(list of a list): list of lists representing each mine location. The first index in each nested list represents the row (0-4) and the second index represents the column (0-4)
+
+Returns:
+
+Notes:
+Modifies the inputted board and inputs X in locations inputted
+
 Author: Maternus Kuang
 '''
 
@@ -68,10 +89,19 @@ def insert_mines(board, positions):
 '''
 Task 4: Counting Adjacent Mines
 A function count_adjacent_mines that counts the number of mines, X, adjacent (including diagonals!) to the selected row, col position
-Input 1: a list representing the board
-Input 2: an int reprersenting the row (0-4) of the square being checked for adjacent mines
-Input 3: an int representing the col (0-4) of the square being checked for adjacent mines
-Output: int representing the number (0-8) of adjacent mines
+
+Arguments:
+board(list): a list representing the board
+rows(int): an int reprersenting the row (0-4) of the square being checked for adjacent mines
+cols(int): an int representing the col (0-4) of the square being checked for adjacent mines
+
+Returns:
+int: int representing the number (0-8) of adjacent mines
+
+Notes:
+Skips the square chosen
+Checks if the surrounding are withen boundary (not outside)
+
 Author: Maternus Kuang
 '''
 
@@ -99,11 +129,21 @@ def count_adjacent_mines(board, rows, cols):
 Task 5: Playing a Turn
 A function play_turn that plays a turn using the provided row and col on the provided board. If a hidden mine is selcted, it should change to a # character. 
 Otherwise the number of mines adjacent to the selected postion should replace the exisitng charcter. If none are adjacent mines, the space character should be used
-Input 1: a list representing the board
-Input 2: an int reprersenting the row (0-4) of postion being selected 
-Input 3: an int representing the col (0-4) of postion being selected
-Output 1: a list representing the updated board. returning the updated board (unlike func 3)
-Outpu 2: bool flagging of a mine was selected True if a mine was selected, False otherwise)
+
+Arguments:
+board(list): a list representing the board
+rows(int): an int reprersenting the row (0-4) of postion being selected 
+cols(int): an int representing the col (0-4) of postion being selected
+
+Returns:
+list: a list representing the updated board. returning the updated board (unlike func 3)
+boolean: bool flagging of a mine was selected True if a mine was selected, False otherwise)
+
+Notes:
+Square changes to "#" if mine is selected
+Change to space " " if no adjacent numbers
+Else the square shows the count
+
 Author: Maternus Kuang
 '''
     
@@ -128,8 +168,16 @@ def play_turn (board, rows, cols):
 '''
 Task 6: Checking for a Win!
 A function check_win that determines if the playter has won the game. This occurs when all positions that do not contain a mine have been selected.
-Input 1: a list representing the board
-Output 1: a bool representing if the game has been won (True) or not (False)
+
+Arguments:
+board(list): a list representing the board
+
+Returns:
+boolean: a bool representing if the game has been won (True) or not (False)
+
+Notes:
+The game over and won if no more "O" left 
+
 Author: Maternus Kuang
 '''
 
@@ -144,7 +192,16 @@ def check_win (board):
 '''
 Task 7: Play a Game
 A function play_game that can play minesweeper game from start to finish
-Input 1: a list of lists indicating the positions that mines will be placed in the board
+
+Arguments:
+positions(list of lists): a list of lists indicating the positions that mines will be placed in the board
+
+Returns:
+
+Notes:
+Continues until the player hits a mine or wins
+Take the user inputs for rows and cols during the game in format EX: 1 1
+
 Author: Maternus Kuang
 '''
 
