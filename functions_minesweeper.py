@@ -181,7 +181,7 @@ The game over and won if no more "O" left
 Author: Maternus Kuang
 '''
 
-def check_win (board): 
+def check_win(board): 
     # Loop through the entire list if there is a O they have not won 
     for n in board:
         if n == "O":
